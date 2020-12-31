@@ -1,5 +1,11 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "root": true,
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
@@ -16,5 +22,10 @@
     "ecmaFeatures": {
       "jsx": true
     }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
   }
 }
