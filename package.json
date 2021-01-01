@@ -11,7 +11,11 @@
     "lint": "esw webpack.config.* src buildScripts --color --fix",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build": "babel-node buildScripts/build.js",
+    "postbuild": "babel-node buildScripts/distServer.js"
   },
   "author": "Deepak Surya S",
   "license": "MIT",
@@ -19,6 +23,7 @@
     "@babel/register": "^7.12.10",
     "chai": "^4.2.0",
     "chalk": "^4.1.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "open": "^7.3.0",
     "webpack": "^5.11.1",
@@ -32,7 +37,6 @@
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
     "cheerio": "^1.0.0-rc.5",
-    "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "eslint": "^7.2.0",
